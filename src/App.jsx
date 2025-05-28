@@ -76,7 +76,7 @@ function App() {
 // Component ->
 // 3 rules
 // 1) A Component Must be a Function
-//2 ) That function should return 'something'
+// 2) That function should return 'something'
 // 3) That 'something' should be some html-type code (jsx coe)
 // jsx ->
 
