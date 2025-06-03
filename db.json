@@ -1,0 +1,34 @@
+{
+  "todos": [
+    {
+      "id": "abc",
+      "title": "Todo 1",
+      "isCompleted": false
+    },
+    {
+      "id": "xyz",
+      "title": "Todo 2",
+      "isCompleted": false
+    },
+    {
+      "id": "fgh",
+      "title": "Todo 3",
+      "isCompleted": false
+    },
+    {
+      "title": "New Todo 4",
+      "isCompleted": false,
+      "id": "Pkkp7Pl"
+    },
+    {
+      "title": "New todo 5",
+      "isCompleted": false,
+      "id": "ScLEAmS"
+    },
+    {
+      "title": "New todo 6",
+      "isCompleted": false,
+      "id": "CKttRi7"
+    }
+  ]
+}
