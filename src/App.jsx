@@ -1,83 +1,77 @@
-import BioData from "./components/BioData";
+// Data layer
+// State
+// Props
+import { useState, useEffect } from "react";
+// custom hook
+const App = () => {
+	const [todos, setTodos] = useState([]);
+	const [todoTitle, seTodoTitle] = useState("");
 
-const bioDataInfo = [
-	{
-		name: "saidur rahman",
-		age: 32,
-		linkedId: "linked/In/srsetu",
-		email: "srsetu@gmail.com",
-		phone: "+884535435452",
-		skills: ["js", "react", "wp", "php", "node"],
-		interests: ["football", "chess", "Astronomy", "traveling"],
-	},
-	{
-		name: "Asiefmahir",
-		age: 26,
-		linkedId: "linked/In/asiefmahir",
-		email: "asiefmahir1@gmail.com",
-		phone: "+453543545454",
-		skills: ["js", "react", "node"],
-		interests: ["football", "traveling"],
-	},
-	{
-		name: "Saifur Rahman",
-		age: 28,
-		linkedId: "linked/In/asiefmahir",
-		email: "asiefmahir1@gmail.com",
-		phone: "+453543545454",
-		skills: ["js", "react"],
-		interests: ["football", "traveling"],
-	},
-];
+	const fetchAllTodos = async () => {
+		fetch(`http://localhost:3000/todos`)
+			.then((res) => res.json())
+			.then((data) => {
+				setTodos(data);
+			});
+	};
 
-// two Layer of a component
-// Presentation Layer
-// Data Layer/Logic Layer ->
+	useEffect(() => {
+		fetchAllTodos();
+	}, []);
 
-function App() {
-	let name = "mahir asief";
-	// const clickHandler = (e) => {
-	// 	console.log(e.target);
-	// };
+	// foyzul karim
+
+	const submitHandler = async (e) => {
+		if (todoTitle.trim() === "") {
+			return alert(`Please provide a valid todo title`);
+		}
+		e.preventDefault();
+		console.log("I am from submit handler");
+		console.log(todoTitle, "todoTitle");
+		fetch(`http://localhost:3000/todos`, {
+			method: "POST",
+			body: JSON.stringify({ title: todoTitle, isCompleted: false }),
+			headers: {
+				"Content-type": "application/json",
+			},
+		}).then(() => {
+			fetchAllTodos();
+			seTodoTitle("");
+		});
+	};
+
+	const removeHandler = (todoId) => {
+		fetch(`http://localhost:3000/todos/${todoId}`, {
+			method: "DELETE",
+		}).then(() => {
+			fetchAllTodos();
+		});
+	};
+
 	return (
 		<>
-			<button
-				onClick={(e) => {
-					console.log(e.target);
-				}}
-			>
-				Random Button
-			</button>
-			{bioDataInfo.map((bioData) => (
-				<BioData
-					name={bioData.name}
-					age={bioData.age}
-					linkedId={bioData.linkedId}
-					email={bioData.email}
-					phone={bioData.phone}
-					skills={bioData.skills}
-					interests={bioData.interests}
+			<form onSubmit={submitHandler}>
+				<input
+					type="text"
+					value={todoTitle}
+					onChange={(e) => seTodoTitle(e.target.value)}
 				/>
-			))}
+				<button type="submit">Add Todo</button>
+			</form>
+			{/* <hr /> */}
+			<h2>All Todos</h2>
+			<ul>
+				{todos?.map((todo) => (
+					<li key={todo.id}>
+						<span>{todo.title}</span>
+						<button onClick={() => removeHandler(todo.id)}>
+							Remove Todo
+						</button>
+					</li>
+				))}
+			</ul>
 		</>
 	);
-}
-// props
-
-// BioData()
-
-// class Person {
-
-// }
-// jsx ->
-
-// App()
-// <App />
-// Component ->
-// 3 rules
-// 1) A Component Must be a Function
-// 2) That function should return 'something'
-// 3) That 'something' should be some html-type code (jsx coe)
-// jsx ->
+};
 
 export default App;
