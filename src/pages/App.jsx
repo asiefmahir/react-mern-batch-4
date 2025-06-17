@@ -2,6 +2,7 @@
 // State
 // Props
 import { useState, useEffect } from "react";
+import Nav from "../components/Nav";
 // custom hook
 const App = () => {
 	const [todos, setTodos] = useState([]);
