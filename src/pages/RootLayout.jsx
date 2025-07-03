@@ -5,14 +5,13 @@ export default function RootLayout() {
 
 	return (
 		<>
+			<div id="sidebar">
+				<Nav />
+			</div>
 			<div id="detail">
 				<Outlet />
 				{/* <About /> */}
 				{/* <Team /> */}
-			</div>
-			<div id="sidebar">
-				<h1>Our App</h1>
-				<Nav />
 			</div>
 		</>
 	);
