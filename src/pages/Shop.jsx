@@ -2,25 +2,38 @@ import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import { getDocs, collection } from "firebase/firestore";
 import ProductCard from "../components/ProductCard";
+import { useGetAllProductsQuery } from "../features/api/apiSlice";
+
+// server state vs client state
+// 90-95% state -> global
+
+// db -> []
+
+// rtk query --> cache
+// shop- > []
+// addproductform -> []
+
+// rtk query
 
 const Shop = () => {
-	const [products, setProducts] = useState([]);
-	const productsCollectionRef = collection(db, "products");
+	const { data: products } = useGetAllProductsQuery();
+	// const [products, setProducts] = useState([]);
+	// const productsCollectionRef = collection(db, "products");
 
-	useEffect(() => {
-		const getProducts = async () => {
-			const data = await getDocs(productsCollectionRef);
-			// console.log(data);
+	// useEffect(() => {
+	// 	const getProducts = async () => {
+	// 		const data = await getDocs(productsCollectionRef);
+	// 		// console.log(data);
 
-			const filteredData = data.docs.map((doc) => ({
-				id: doc.id,
-				...doc.data(),
-			}));
-			console.log(filteredData);
-			setProducts(filteredData);
-		};
-		getProducts();
-	}, []);
+	// 		const filteredData = data.docs.map((doc) => ({
+	// 			id: doc.id,
+	// 			...doc.data(),
+	// 		}));
+	// 		console.log(filteredData);
+	// 		setProducts(filteredData);
+	// 	};
+	// 	getProducts();
+	// }, []);
 	return (
 		<>
 			<div className="page-banner">
