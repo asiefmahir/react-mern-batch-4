@@ -1,32 +1,46 @@
-// server component
-// code -> browser e jabe na
-// server -> server -> costing -> malik
-// client -> client rendered
+import ProductCard from "@/app/components/ProductCard";
 
-import Counter from "@/app/components/Counter";
-
-// hook
-// event listener
-
-export default async function Home() {
+const Shop = async () => {
 	console.log("I am being rendered");
+	// isr -> incremental Static Re-generation
+	// {key -> value}
 
-	const res = await fetch(
-		`https://jsonplaceholder.typicode.com/posts?_limit=5`,
-	);
-
-	const posts = await res.json();
+	const res = await fetch(`http://localhost:4000/products`, {
+		next: { tags: ["amaroproanojahachay"] },
+	});
+	const products = await res.json();
 	return (
-		<div>
-			<h2>I am jsx</h2>
-			<ul>
-				{posts.map((post) => (
-					<li key={post.id}>{post.title}</li>
-				))}
-			</ul>
-			<hr />
-			{/* {placeholder}  */}
-			<Counter />
-		</div>
+		<>
+			<div className="page-banner">
+				<div className="page-banner__details">
+					<div className="page-banner__details__title">
+						<h1>Our E-commerce Website</h1>
+					</div>
+				</div>
+			</div>
+			<div className="section">
+				<div className="container">
+					<div className="section__head">
+						<div className="product__details__title">
+							<h2>All Products</h2>
+						</div>
+					</div>
+					{products?.length > 0 && (
+						<div className="section__content">
+							<div className="grid three">
+								{products?.map((product) => (
+									<ProductCard
+										key={product.id}
+										product={product}
+									/>
+								))}
+							</div>
+						</div>
+					)}
+				</div>
+			</div>
+		</>
 	);
-}
+};
+
+export default Shop;
