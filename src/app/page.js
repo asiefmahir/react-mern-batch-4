@@ -3,12 +3,22 @@ import ProductCard from "@/app/components/ProductCard";
 const Shop = async () => {
 	console.log("I am being rendered");
 	// isr -> incremental Static Re-generation
+	// vm -> 2ta 100000
+	// vm -> 5ta
+	// vm -> 2ta
+	// 15000 -> 10%-> 1500 -> pay 10 -> $15000
+	// backup -> shared hosting
 	// {key -> value}
 
-	const res = await fetch(`http://localhost:4000/products`, {
+	// cloud
+
+	// system design
+	//
+
+	const res = await fetch(`http://localhost:3000/api/product`, {
 		next: { tags: ["amaroproanojahachay"] },
 	});
-	const products = await res.json();
+	const { data: products } = await res.json();
 	return (
 		<>
 			<div className="page-banner">
@@ -30,7 +40,7 @@ const Shop = async () => {
 							<div className="grid three">
 								{products?.map((product) => (
 									<ProductCard
-										key={product.id}
+										key={product._id}
 										product={product}
 									/>
 								))}

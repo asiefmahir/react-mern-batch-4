@@ -13,7 +13,7 @@ export const addProduct = async (formData) => {
 		image: formData.get("image"),
 	};
 
-	await fetch(`http://localhost:4000/products`, {
+	await fetch(`http://localhost:3000/api/product`, {
 		method: "POST",
 		headers: {
 			"Content-type": "application/json",
