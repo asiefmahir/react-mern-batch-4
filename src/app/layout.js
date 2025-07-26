@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 const geistSans = Geist({
 	variable: "--font-geist-sans",
 	subsets: ["latin"],
+	weight: [],
 });
 
 const geistMono = Geist_Mono({

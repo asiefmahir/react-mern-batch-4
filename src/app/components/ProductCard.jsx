@@ -1,11 +1,24 @@
 "use client";
+import Image from "next/image";
 
 function ProductCard({ product }) {
 	return (
 		<div className="ingredient">
 			<div className="ingredient__image">
-				<figure>
-					<img src={product.image} alt={product.title} />
+				<figure
+				// style={{
+				// 	position: "relative",
+				// 	aspectRatio: "inherit",
+				// 	height: "100px",
+				// 	width: "100px",
+				// }}
+				>
+					<Image
+						src={product.image}
+						alt={product.title}
+						width={2500}
+						height={1600}
+					/>
 				</figure>
 			</div>
 			<div className="ingredient__title">
@@ -26,3 +39,7 @@ function ProductCard({ product }) {
 }
 
 export default ProductCard;
+
+// next js -> isr, server action, middleware, rendering pattern, server side rendering
+// context api, useReducer, useState
+//

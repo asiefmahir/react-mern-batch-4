@@ -1,19 +1,8 @@
 import ProductCard from "@/app/components/ProductCard";
+import Image from "next/image";
 
 const Shop = async () => {
 	console.log("I am being rendered");
-	// isr -> incremental Static Re-generation
-	// vm -> 2ta 100000
-	// vm -> 5ta
-	// vm -> 2ta
-	// 15000 -> 10%-> 1500 -> pay 10 -> $15000
-	// backup -> shared hosting
-	// {key -> value}
-
-	// cloud
-
-	// system design
-	//
 
 	const res = await fetch(`http://localhost:3000/api/product`, {
 		next: { tags: ["amaroproanojahachay"] },
@@ -26,6 +15,70 @@ const Shop = async () => {
 					<div className="page-banner__details__title">
 						<h1>Our E-commerce Website</h1>
 					</div>
+				</div>
+			</div>
+			<div className="page-banner">
+				<div className="page-banner__details">
+					<div className="page-banner__details__title">
+						<h1>Our E-commerce Website</h1>
+					</div>
+				</div>
+			</div>
+			<div className="page-banner">
+				<div className="page-banner__details">
+					<div className="page-banner__details__title">
+						<h1>Our E-commerce Website</h1>
+					</div>
+				</div>
+			</div>
+			<div className="page-banner">
+				<div className="page-banner__details">
+					<div className="page-banner__details__title">
+						<h1>Our E-commerce Website</h1>
+					</div>
+				</div>
+			</div>
+			<div className="page-banner">
+				<div className="page-banner__details">
+					<div className="page-banner__details__title">
+						<h1>Our E-commerce Website</h1>
+					</div>
+				</div>
+			</div>
+
+			<div className="page-banner">
+				<div className="page-banner__details">
+					<div className="page-banner__details__title">
+						<h1>Our E-commerce Website</h1>
+					</div>
+				</div>
+			</div>
+			<div className="page-banner">
+				<div className="page-banner__details">
+					<div className="page-banner__details__title">
+						<h1>Our E-commerce Website</h1>
+					</div>
+				</div>
+			</div>
+			<div className="page-banner">
+				<div className="page-banner__details">
+					<div className="page-banner__details__title">
+						<h1>Our E-commerce Website</h1>
+					</div>
+				</div>
+			</div>
+			<div className="page-banner">
+				<div className="page-banner__details">
+					<div className="page-banner__details__title">
+						<h1>Our E-commerce Website</h1>
+					</div>
+					<Image
+						// style={{ width: "100vw", height: "100vh" }}
+						width={1920}
+						height={1080}
+						src="/test-image-7mb.jpg"
+						alt=""
+					/>
 				</div>
 			</div>
 			<div className="section">
